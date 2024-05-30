@@ -1,0 +1,20 @@
+<h1>{{ home }}</h1>
+<p>home works!</p>
+<p>{{user.nume}} {{user.prenume}}</p>
+
+<img *ngIf="showImg" [src]="imageUrl" alt="{{ home }}">
+
+<button (click)="trimiteDate()"> Trimite date</button>
+
+
+<input [(ngModel)]="myName" type="text" name="nume" id="nume" value="">
+
+<p>{{myName}}</p>
+
+<select name="" id="">
+    <option value="">Selecteaza o masina</option>
+    <option *ngFor="let i of cars">{{i}}</option>
+
+</select>
+
+<app-articol></app-articol>
