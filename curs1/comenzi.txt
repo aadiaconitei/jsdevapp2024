@@ -15,11 +15,11 @@ npm -v
 npm install -g @angular/cli
 
 --update angular
-npm uninstall -g @angular/cli
-npm cache clean --force
+sudo npm uninstall -g @angular/cli
+sudo npm cache clean --force
 
 Instalare o anumita versiune:
-npm install -g @angular/cli@16.2.14
+sudo npm install -g @angular/cli@16.2.14
 sau
 npm install -g @angular/cli@latest
 
