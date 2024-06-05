@@ -13,6 +13,7 @@ const vm = Vue.createApp({
         myName: function () {
             return "Eu ma numesc " + this.fname + " " + this.lname + " si sunt din " + this.address;
         }
+        
     }
 }).mount('#app');
 const app = Vue.createApp({
