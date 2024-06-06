@@ -12,7 +12,7 @@ npm run serve
 
 la final: npm run build
 
-npm install --save vue-router axios
+npm install --save vue-router axios bootstrap @popperjs/core
 npm install --save bootstrap
 npm install --save @popperjs/core
 

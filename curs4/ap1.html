@@ -29,16 +29,17 @@
                     counterMethod: 0
                 };
             },
-            computed: {
-                printTextComputed: function () {
-                    console.log('counter printed from computed:', this.counterComputed);
-                }
-            },
+
             methods: {
                 printTextMethod: function () {
                     console.log('counter printed from method:', this.counterMethod);
                 }
             },
+            computed: {
+                printTextComputed: function () {
+                    console.log('counter printed from computed:', this.counterComputed);
+                }
+            }
         }).mount('#app');
 
     </script>
