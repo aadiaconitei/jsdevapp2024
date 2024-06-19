@@ -18,8 +18,9 @@ export const findAll = (callback: Function) => {
         email: row.email,
         datanastere: row.datanastere,
         telefon: row.telefon,
+        cnp: row.cnp,
         dataadaugare: row.dataadaugare,
-        poza:row.poza,
+        poza: row.poza,
         actiune: "",
       };
       users.push(user);
@@ -43,7 +44,8 @@ export const findOne = (userId: number, callback: Function) => {
       email: row.email,
       datanastere: row.datanastere,
       telefon: row.telefon,
-      poza:row.poza,
+      poza: row.poza,
+      cnp: row.cnp,
       //dataadaugare: row.dataadaugare,
     };
     callback(null, user);
@@ -51,36 +53,59 @@ export const findOne = (userId: number, callback: Function) => {
 };
 // create user
 export const create = (user: User, callback: Function) => {
+  //let mydate = user.datanastere.toISOString().split('T')[0]
   const queryString =
-    "INSERT INTO jsusers (nume, prenume, email, datanastere, telefon, poza) VALUES (?, ?, ?, ?, ?, ?)";
-    console.log(user);
+    "INSERT INTO jsusers (nume, prenume, email, datanastere, telefon, poza, cnp) VALUES (?, ?, ?, ?, ?, ?, ?)";
+  console.log(user);
   db.query(
     queryString,
-    [user.nume, user.prenume, user.email, user.datanastere, user.telefon, user.poza],
+    [
+      user.nume,
+      user.prenume,
+      user.email,
+      user.datanastere,
+      user.telefon,
+      user.poza,
+      user.cnp,
+    ],
     (err, result) => {
       if (err) {
         callback(err);
       }
-    
-      
-        const insertId = (<OkPacket>result).insertId;
-        callback(null, insertId);
-      
+
+      const insertId = (<OkPacket>result).insertId;
+      callback(null, insertId);
     }
   );
 };
 
 // update user
 export const update = (user: User, callback: Function) => {
-  const queryString = `UPDATE jsusers SET nume=?, prenume=?,email=?, telefon=?, datanastere=? WHERE id=?`;
+  // let mydate = user.datanastere.toISOString().split("T")[0];
+  const queryString = `UPDATE jsusers SET nume=?, prenume=?,email=?, telefon=?,datanastere=?, poza=?, cnp=? WHERE id=?`;
 
-  db.query(queryString, [user.nume, user.prenume,user.email,user.telefon,user.datanastere, user.id], (err, result) => {
-    if (err) {
-      callback(err);
+  db.query(
+    queryString,
+    [
+      user.nume,
+      user.prenume,
+      user.email,
+      user.telefon,
+      user.datanastere,
+      user.poza,
+      user.cnp,
+      user.id
+    ],
+    (err, result) => {
+      if (err) {
+        console.log("sunt aici", err);
+        callback(err);
+       
+      }
+      
+      callback(null);
     }
-    console.log('sunt aici',result);
-    callback(null);
-  });
+  );
 };
 // delete user
 export const deleteUser = (user: number, callback: Function) => {

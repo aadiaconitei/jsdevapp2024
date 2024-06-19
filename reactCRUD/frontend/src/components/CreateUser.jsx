@@ -32,7 +32,7 @@ const CreateUser = () => {
         <UserForm initialValues={formValues}
             onSubmit={onSubmit}
             enableReinitialize >
-            Create User bbbbb
+            Create User
         </UserForm>
     )
 }

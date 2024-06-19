@@ -29,6 +29,16 @@
           v-model="currentUser.email"
         />
       </div>
+      <div class="form-group">
+        <label for="poza">Poza</label>
+        <input
+          type="url"
+          class="form-control"
+          id="poza"
+          v-model="currentUser.poza"
+        />
+        <img  style="max-width:100px" :src="currentUser.poza" alt="">
+      </div>
     </form>
 
     <button
@@ -42,7 +52,7 @@
   </div>
   <div v-else>
     <br />
-    <p>Please click on a User...</p>
+    <p>Nu am date</p>
   </div>
 </template>
 <script>
@@ -59,8 +69,8 @@ export default {
     getUser(id) {
       UserService.get(id)
         .then((response) => {
-          this.currentUser = response.data["users"];
-          console.log(response.data["users"]);
+          this.currentUser = response.data["data"];
+          console.log(response.data["data"]);
         })
         .catch((e) => {
           console.log(e);

@@ -1,4 +1,4 @@
-function Car(props) {
+export default function Car(props) {
   // https://www.learnbestcoding.com/post/69/why-react-onclick-function-fires-on-render
   const vinde = (a) => {
     return () => {

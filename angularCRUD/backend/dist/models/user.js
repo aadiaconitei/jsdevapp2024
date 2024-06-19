@@ -19,6 +19,7 @@ const findAll = (callback) => {
                 email: row.email,
                 datanastere: row.datanastere,
                 telefon: row.telefon,
+                cnp: row.cnp,
                 dataadaugare: row.dataadaugare,
                 poza: row.poza,
                 actiune: "",
@@ -45,6 +46,7 @@ const findOne = (userId, callback) => {
             datanastere: row.datanastere,
             telefon: row.telefon,
             poza: row.poza,
+            cnp: row.cnp,
             //dataadaugare: row.dataadaugare,
         };
         callback(null, user);
@@ -53,9 +55,18 @@ const findOne = (userId, callback) => {
 exports.findOne = findOne;
 // create user
 const create = (user, callback) => {
-    const queryString = "INSERT INTO jsusers (nume, prenume, email, datanastere, telefon, poza) VALUES (?, ?, ?, ?, ?, ?)";
+    //let mydate = user.datanastere.toISOString().split('T')[0]
+    const queryString = "INSERT INTO jsusers (nume, prenume, email, datanastere, telefon, poza, cnp) VALUES (?, ?, ?, ?, ?, ?, ?)";
     console.log(user);
-    db_1.db.query(queryString, [user.nume, user.prenume, user.email, user.datanastere, user.telefon, user.poza], (err, result) => {
+    db_1.db.query(queryString, [
+        user.nume,
+        user.prenume,
+        user.email,
+        user.datanastere,
+        user.telefon,
+        user.poza,
+        user.cnp,
+    ], (err, result) => {
         if (err) {
             callback(err);
         }
@@ -66,12 +77,22 @@ const create = (user, callback) => {
 exports.create = create;
 // update user
 const update = (user, callback) => {
-    const queryString = `UPDATE jsusers SET nume=?, prenume=?,email=?, telefon=?, datanastere=? WHERE id=?`;
-    db_1.db.query(queryString, [user.nume, user.prenume, user.email, user.telefon, user.datanastere, user.id], (err, result) => {
+    // let mydate = user.datanastere.toISOString().split("T")[0];
+    const queryString = `UPDATE jsusers SET nume=?, prenume=?,email=?, telefon=?,datanastere=?, poza=?, cnp=? WHERE id=?`;
+    db_1.db.query(queryString, [
+        user.nume,
+        user.prenume,
+        user.email,
+        user.telefon,
+        user.datanastere,
+        user.poza,
+        user.cnp,
+        user.id,
+    ], (err, result) => {
         if (err) {
             callback(err);
         }
-        console.log('sunt aici', result);
+        console.log("sunt aici", result);
         callback(null);
     });
 };

@@ -32,6 +32,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ user.nume }} {{ user.prenume }}</h5>
             <p class="card-text">{{ user.id }}</p>
+            <img :src="user.poza" alt="">
             <router-link
               :to="'/users/' + user.id"
               class="btn btn-outline-primary me-2 mt-2"
